@@ -1,0 +1,3 @@
+Valencia 3 300
+Madrid 6 700
+Toledo 8 400

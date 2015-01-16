@@ -1,0 +1,3 @@
+mesa 60
+pato 90
+burro 70
