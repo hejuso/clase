@@ -17,7 +17,7 @@ public class Ejercicio2 {
 				System.out.println(in.next().toLowerCase());
 
 			} while (in.hasNext() == false);
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
