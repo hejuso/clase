@@ -7,13 +7,11 @@ public class PruebaComplejoEj1 {
 		Ejercicio1 e;
 		e= new Ejercicio1();
 		
-		e.asignar(20, 4);
+		e.asignar(2.6, 4.6);
 		
-		e.sumar();
+		e.sumar(e);
 		
 		e.imprimir();
-		
-		System.out.println("Valor= "+e.imprimir());
 		
 	}
 

@@ -2,25 +2,26 @@ package TEMA5;
 
 public class Ejercicio1 {
 	
-		double pReal;
-		double pImag;
-		double resultado;
+		private double pReal;
+		private double pImag;
+
 
 	void asignar(double x, double y) {
 		
-		x=pReal;
-		y=pImag;
+		pReal=x;
+		pImag=y;
 
 	}
 	
-	void sumar(){
+	public void sumar(Ejercicio1 b){
 		
-		resultado = pReal+pImag;
-		
+		this.pReal=this.pReal + b.pReal;
+		this.pImag=this.pImag + b.pImag;
 	}
 	
-	public double imprimir(){
-		return resultado;
+	public void imprimir(){
+		System.out.println("Suma de número real: "+pReal);
+		System.out.println("Suma de número imaginario: "+pImag);
 	}
 
 }
