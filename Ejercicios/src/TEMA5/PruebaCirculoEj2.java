@@ -6,21 +6,23 @@ public class PruebaCirculoEj2 {
 		// TODO Auto-generated method stub
 		
 		Ejercicio2 e;
+		Ejercicio2 e2;
 		
 		e= new Ejercicio2();
+		e2= new Ejercicio2();
 		
 		e.asignaRadio(3);
+		e2.asignaRadio(4);
 		e.daRadio();
-		e.asignaRadio2(1);
-		e.daRadio2();
-		
+		e2.daRadio();
+
 		e.longitud();
-		e.longitud2();
+		e2.longitud();
 		
 		e.area();
-		e.area2();
-		
-		e.mayorQue();
+		e2.area();
+
+		e.mayorQue(e2);
 
 	}
 
