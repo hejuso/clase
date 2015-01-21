@@ -26,7 +26,6 @@ public class Ejercicio2 {
 	public double longitud(){
 		
 		longitud = 2*3.14*radio;
-		System.out.println("Longitud de la circumferencia : "+longitud);
 		return longitud;
 		
 	}
@@ -34,7 +33,6 @@ public class Ejercicio2 {
 	public double area(){
 		
 		area = 3.14 * Math.pow(radio,2);
-		System.out.println("Area de la circumferencia : "+area);
 		return area;
 	}
 
