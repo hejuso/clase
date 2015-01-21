@@ -9,8 +9,10 @@ public class PruebaCirculoEj2 {
 		
 		e= new Ejercicio2();
 		
-		e.asignaRadio(4);
-		e.asignaRadio2(7);
+		e.asignaRadio(3);
+		e.daRadio();
+		e.asignaRadio2(1);
+		e.daRadio2();
 		
 		e.longitud();
 		e.longitud2();

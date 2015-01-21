@@ -4,13 +4,13 @@ public class Ejercicio2 {
 
 	//atributos
 	
-	double radio;
-	double longitud;
-	double area;
+	private double radio;
+	private double longitud;
+	private double area;
 	
-	double radio2;
-	double longitud2;
-	double area2;
+	private double radio2;
+	private double longitud2;
+	private double area2;
 	
 	boolean mayor;
 	
@@ -23,6 +23,7 @@ public class Ejercicio2 {
 
 	public double daRadio(){
 		
+		System.out.println("Radio: "+radio);
 		return radio;
 	}
 	
@@ -47,6 +48,7 @@ public class Ejercicio2 {
 
 	public double daRadio2(){
 		
+		System.out.println("Radio: "+radio2);
 		return radio2;
 	}
 	
@@ -76,6 +78,12 @@ public class Ejercicio2 {
 		if (area<area2 && longitud<longitud2){
 			
 			System.out.println("El circulo 2 es mas grande");
+			
+		}
+		
+		if (area==area2 && longitud==longitud2){
+			
+			System.out.println("Son circulos iguales");
 			
 		}
 		
