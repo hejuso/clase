@@ -2,8 +2,8 @@ package TEMA5;
 
 public class Ejercicio1 {
 	
-		private double pReal;
-		private double pImag;
+		double pReal;
+		double pImag;
 
 
 	void asignar(double x, double y) {
