@@ -10,9 +10,53 @@ public class Ejercicio3 {
 	
 	//metodos
 
-		public int TicketMachine(int ticketCost){
+		public Ejercicio3(int ticketCost){
 			
-			return ticketCost;
+			price= ticketCost;
+			
+		}
+
+		public int getPrice(){
+			System.out.println("El ticket vale "+price +"€");
+			return price;
+			
+			
+		}
+
+		public int getBalance(){
+			System.out.println("Ha introducido "+balance+ "€");
+			return balance;
+		}
+
+		public void insertMoney(int amount){
+			if(amount>=0){
+				balance += amount;
+			}else{
+				System.out.println("Este numero es negativo.");
+			}
+			
+		}
+
+		
+		public void printTicket(){
+			if (balance>=price) {
+				balance -= price;
+				total = total+price;
+				System.out.println("Aqui tiene su ticket");
+				
+			}else{
+				System.out.println("No ha introducido suficiente dinero");
+				int falta = price - balance;
+				System.out.println("Le faltan: "+falta+" €");
+			}
+			
+		}
+
+		public int refundBalance(){
+			
+			System.out.println("Su cambio: "+balance);
+			return balance;
+			
 		}
 
 		
