@@ -1,5 +1,7 @@
 package TEMA5;
 
+import java.util.Scanner;
+
 public class Ejercicio9 {
 
 	// Atributos
@@ -17,11 +19,10 @@ public class Ejercicio9 {
 
 	}
 
-	public Ejercicio9(int adni, char aletra) {
+	public Ejercicio9(int adni) {
 
 		dni = adni;
-		letra = aletra;
-
+		letra = letra();
 	}
 
 	// Métodos
@@ -31,20 +32,35 @@ public class Ejercicio9 {
 		System.out.println("Su DNI es: " + dni + "-" + calcLetra);
 
 	}
-	
-	public String acceso(){
-		
-		
-		
-		return dniString;
+
+	public String accesoDNI() {
+
+		return Integer.toString(dni);
 	}
 
-	public char letra() {
+	public String accesoNIF() {
 
-		int resto =  (dni % 23);
+		String nif = Integer.toString(dni)+" - "+ letra;
 		
+		return nif;
+	}
+	
+	public int leer(int x){
+		
+		int leerDNI=x;
+		dni= leerDNI;
+		
+		System.out.println("La letra del DNI "+dni+" es "+letra());
+		
+		return x;
+	}
+
+	private char letra() {
+
+		int resto = (dni % 23);
+
 		switch (resto) {
-		
+
 		case 0:
 			calcLetra = 'T';
 			break;
