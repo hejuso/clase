@@ -20,24 +20,25 @@ public class Empresa {
 
 		int numTrab = 0;
 		int i = 0;
-		
+
 		Scanner in = null;
 		try {
-			
+
 			in = new Scanner(new FileReader("TrabajadoresEmpresa.txt"));
-			while(in.hasNext()) {
-				
+			while (in.hasNext()) {
+
 				String nombreT = in.next();
 				String dniT = in.next();
 				int antiguedadT = in.nextInt();
 				int salarioT = in.nextInt();
 				String departamentoT = in.next();
-				
-				Trabajador t = new Trabajador(nombreT, dniT, antiguedadT, salarioT, departamentoT);
-				trabajadores [i] = t;
-				
+
+				Trabajador t = new Trabajador(nombreT, dniT, antiguedadT,
+						salarioT, departamentoT);
+				trabajadores[i] = t;
+
 			}
-						
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,50 +47,97 @@ public class Empresa {
 
 		}
 	}
-		//Metodos
-		
 
+	// Metodos
+	
+	public int getNumMaximoTrabajadores(){
 		
-		public int getNumTrabajadores(){
-			
-			return numTrabajadores;
+		return maxTrabajadores;
+	}
+
+	public int getNumTrabajadores() {
+
+		return numTrabajadores;
+	}
+
+	public String getNombreEmpresa() {
+
+		return nombre;
+	}
+	
+
+	public boolean existeEmpleado(String numDni) {
+
+		int i = 0;
+
+		boolean encontrado = false;
+		while (i < numTrabajadores && !encontrado) {
+
+			if (numDni.equals(trabajadores[i].getDNI())) {
+				encontrado = true;
+			}
+			i++;
 		}
-		
-		public String getNombreEmpresa(){
-			
-			return nombre;
+
+		return encontrado;
+	}
+
+	public void anyadirEmpleado(Trabajador e) {
+
+		boolean existe = existeEmpleado(e.getDNI());
+
+		System.out.println("Comprobacion de existencia: " + existe);
+
+		if (!existe) {
+
+			boolean insertado = false;
+			for (int i = 0; i < maxTrabajadores && !insertado; i++) {
+
+				if (trabajadores[i] == null) {
+					trabajadores[numTrabajadores] = e;
+					numTrabajadores++;
+					System.out.println("Num trabaj tras añadir empleado: "
+							+ numTrabajadores);
+					// break;
+					insertado = true;
+				}  
+
+			}
+
 		}
-		
-		public boolean existeEmpleado(String numDni){
-			
-			int i = 0;
-			System.out.println("numTrabajadores: "+numTrabajadores);
-			while(i < numTrabajadores && !numDni.equals(trabajadores[i].getDNI()) ){
-				System.out.println(trabajadores[i].getDNI());
+
+		if (numTrabajadores < maxTrabajadores) {
+
+			System.out.println("Se ha excedido el número máximo de empleados.");
+		}
+
+	}
+
+	public String cancelarEmpleado(String numDni) {
+
+		boolean existe = existeEmpleado(numDni);
+		int i = 0;
+		String cancelado = "Imposible realizar la cancelacion: el DNI "
+				+ numDni + " no existe";
+
+		if (existe) {
+
+			while (i != maxTrabajadores) {
+
+				if (trabajadores[i] != null
+						&& trabajadores[i].getDNI().equals(numDni)) {
+
+					trabajadores[i] = null;
+
+					cancelado = "Empleado borrado del sistema";
+
+				}
+
 				i++;
 			}
-			
-			boolean existe = false;
-			
-			if (i < trabajadores.length){
-			existe = true; 
-			}
-			
-			return existe;
-		}
-		
-		public void anyadirEmpleado(Trabajador e){
-			
-			boolean existe = existeEmpleado(e.getDNI());
-					
-			if (!existe && numTrabajadores < maxTrabajadores){
-				
-				trabajadores[]
-				
-			}
-			
-			
+
 		}
 
-	
+		return (cancelado);
+	}
 }
