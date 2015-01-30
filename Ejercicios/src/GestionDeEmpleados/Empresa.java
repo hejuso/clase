@@ -78,8 +78,15 @@ public class Empresa {
 			return existe;
 		}
 		
-		public void anyadirEmpleado(Empleado e){
+		public void anyadirEmpleado(Trabajador e){
 			
+			boolean existe = existeEmpleado(e.getDNI());
+					
+			if (!existe && numTrabajadores < maxTrabajadores){
+				
+				trabajadores[]
+				
+			}
 			
 			
 		}
