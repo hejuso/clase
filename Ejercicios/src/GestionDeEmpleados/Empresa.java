@@ -45,13 +45,10 @@ public class Empresa {
 			in.close();
 
 		}
-		
+	}
 		//Metodos
 		
-		public int getNumMaximoTrabajadores(){
-			
-			return maxTrabajadores;
-		}
+
 		
 		public int getNumTrabajadores(){
 			
@@ -63,13 +60,29 @@ public class Empresa {
 			return nombre;
 		}
 		
-		public boolean existeEmpleado(int numDni){
+		public boolean existeEmpleado(String numDni){
 			
+			int i = 0;
+			System.out.println("numTrabajadores: "+numTrabajadores);
+			while(i < numTrabajadores && !numDni.equals(trabajadores[i].getDNI()) ){
+				System.out.println(trabajadores[i].getDNI());
+				i++;
+			}
+			
+			boolean existe = false;
+			
+			if (i < trabajadores.length){
+			existe = true; 
+			}
+			
+			return existe;
 		}
 		
 		public void anyadirEmpleado(Empleado e){
 			
+			
+			
 		}
 
-	}
+	
 }
