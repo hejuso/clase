@@ -2,6 +2,7 @@ package GestionDeEmpleados;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Empresa {
@@ -9,7 +10,7 @@ public class Empresa {
 	// Atributos
 
 	private String nombre = "Empresas CHACHIS S.L.";
-	private int antiguedadEmpresa;
+	private int antiguedadEmpresa = 5;
 	private int maxTrabajadores;
 	private int numTrabajadores;
 	private Trabajador[] trabajadores;
@@ -49,9 +50,9 @@ public class Empresa {
 	}
 
 	// Metodos
-	
-	public int getNumMaximoTrabajadores(){
-		
+
+	public int getNumMaximoTrabajadores() {
+
 		return maxTrabajadores;
 	}
 
@@ -64,7 +65,6 @@ public class Empresa {
 
 		return nombre;
 	}
-	
 
 	public boolean existeEmpleado(String numDni) {
 
@@ -100,7 +100,7 @@ public class Empresa {
 							+ numTrabajadores);
 					// break;
 					insertado = true;
-				}  
+				}
 
 			}
 
@@ -140,4 +140,117 @@ public class Empresa {
 
 		return (cancelado);
 	}
+
+	public int getIdEmpleado(String numDni) {
+		int i;
+		int idTrabajador = 0;
+		boolean existe = false;
+
+		for (i = 0; i < maxTrabajadores && !existe; i++) {
+
+			if (numDni.equals(trabajadores[i].getDNI())) {
+
+				idTrabajador = 1;
+				existe = true;
+
+			}
+
+		}
+
+		return idTrabajador;
+	}
+
+	public String getInfoEmpleado(String numDni) {
+
+		int i = 0;
+		int posicion = getIdEmpleado(numDni);
+		boolean existe = false;
+		String datos = null;
+
+		while (existe) {
+
+			if (i == posicion) {
+
+				datos = trabajadores[i].getNombre() + " "
+						+ trabajadores[i].getDNI() + " "
+						+ trabajadores[i].getAntiguedad() + " "
+						+ trabajadores[i].getSalario() + " "
+						+ trabajadores[i].getDepartamento();
+				existe = true;
+			}
+
+			i++;
+		}
+		return datos;
+
+	}
+
+	public String listarEmpleados() {
+		int i;
+		String datos = null;
+
+		for (i = 0; i < maxTrabajadores; i++) {
+
+			datos = trabajadores[i].getNombre() + " "
+					+ trabajadores[i].getDNI() + " "
+					+ trabajadores[i].getAntiguedad() + " "
+					+ trabajadores[i].getSalario() + " "
+					+ trabajadores[i].getDepartamento();
+		}
+
+		return datos;
+	}
+
+	public void guardar(PrintWriter out) {
+		out = null;
+		int i = 0;
+		try {
+
+			out = new PrintWriter("datosEmpleados.txt");
+			for (i = 0; i < maxTrabajadores; i++) {
+
+				out.println(trabajadores[i].getNombre() + " "
+						+ trabajadores[i].getDNI() + " "
+						+ trabajadores[i].getAntiguedad() + " "
+						+ trabajadores[i].getSalario() + " "
+						+ trabajadores[i].getDepartamento());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
+	public void toHistograma() {
+
+		int histograma[] = new int[antiguedadEmpresa + 1];
+		int i;
+
+		int j;
+
+		for (i = 0; i < maxTrabajadores; i++) {
+
+			histograma[trabajadores[i].getAntiguedad()]++;
+
+		}
+
+		for (i = 0; i < antiguedadEmpresa + 1; i++) {
+
+			System.out.print("Con " + i + " año de antiguedad: ");
+
+			for (j = 0; j < histograma[i]; j++) {
+
+				System.out.print(" * ");
+			}
+			System.out.println("");
+
+		}
+
+	}
+
 }
