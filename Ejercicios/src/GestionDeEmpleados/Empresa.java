@@ -19,13 +19,15 @@ public class Empresa {
 
 	public Empresa() {
 
-		int numTrab = 0;
 		int i = 0;
 
 		Scanner in = null;
 		try {
 
 			in = new Scanner(new FileReader("TrabajadoresEmpresa.txt"));
+			maxTrabajadores = in.nextInt();
+			trabajadores= new Trabajador[maxTrabajadores];
+			
 			while (in.hasNext()) {
 
 				String nombreT = in.next();
@@ -37,9 +39,9 @@ public class Empresa {
 				Trabajador t = new Trabajador(nombreT, dniT, antiguedadT,
 						salarioT, departamentoT);
 				trabajadores[i] = t;
-
+				i++;
 			}
-
+			numTrabajadores=i;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,7 +132,7 @@ public class Empresa {
 					trabajadores[i] = null;
 
 					cancelado = "Empleado borrado del sistema";
-
+					
 				}
 
 				i++;
