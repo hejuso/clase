@@ -1,5 +1,6 @@
 package GestionDeEmpleados;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Gestor {
 		Empresa e = new Empresa();
 
 		while (opcion != 32) {
-			
+
 			System.out.println("*********** MENU PRINCIPAL ***********");
 			System.out.println("1.Número de trabajadores");
 			System.out.println("2.Buscar datos de un trabajador");
@@ -32,7 +33,7 @@ public class Gestor {
 			case 1:
 				System.out.println("");
 				System.out.println("El numero de trabajadores es: "
-						+ e.getNumMaximoTrabajadores());
+						+ e.getNumTrabajadores());
 				System.out.println("");
 				break;
 
@@ -107,7 +108,16 @@ public class Gestor {
 			case 0:
 				System.out.println("");
 				PrintWriter out = null;
-				e.guardar(out);
+				try {
+					out = new PrintWriter("TrabajadoresEmpresa");
+					e.guardar(out);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally {
+					out.close();
+				}
+
 				System.out.println("");
 				System.exit(0);
 

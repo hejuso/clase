@@ -26,8 +26,8 @@ public class Empresa {
 
 			in = new Scanner(new FileReader("TrabajadoresEmpresa.txt"));
 			maxTrabajadores = in.nextInt();
-			trabajadores= new Trabajador[maxTrabajadores];
-			
+			trabajadores = new Trabajador[maxTrabajadores];
+
 			while (in.hasNext()) {
 
 				String nombreT = in.next();
@@ -41,7 +41,7 @@ public class Empresa {
 				trabajadores[i] = t;
 				i++;
 			}
-			numTrabajadores=i;
+			numTrabajadores = i;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,27 +90,29 @@ public class Empresa {
 
 		System.out.println("Comprobacion de existencia: " + existe);
 
-		if (!existe) {
-
-			boolean insertado = false;
-			for (int i = 0; i < maxTrabajadores && !insertado; i++) {
-
-				if (trabajadores[i] == null) {
-					trabajadores[numTrabajadores] = e;
-					numTrabajadores++;
-					System.out.println("Num trabaj tras añadir empleado: "
-							+ numTrabajadores);
-					// break;
-					insertado = true;
-				}
-
-			}
-
-		}
-
 		if (numTrabajadores < maxTrabajadores) {
 
-			System.out.println("Se ha excedido el número máximo de empleados.");
+			if (!existe) {
+
+				boolean insertado = false;
+				for (int i = 0; i < maxTrabajadores && !insertado; i++) {
+
+					if (trabajadores[i] == null) {
+						trabajadores[numTrabajadores] = e;
+						numTrabajadores++;
+						System.out.println("Num trabaj tras añadir empleado: "
+								+ numTrabajadores);
+						// break;
+						insertado = true;
+					}
+
+				}
+
+			} else {
+
+				System.out
+						.println("Se ha excedido el número máximo de empleados.");
+			}
 		}
 
 	}
@@ -132,7 +134,7 @@ public class Empresa {
 					trabajadores[i] = null;
 
 					cancelado = "Empleado borrado del sistema";
-					
+
 				}
 
 				i++;
@@ -189,15 +191,22 @@ public class Empresa {
 
 	public String listarEmpleados() {
 		int i;
-		String datos = null;
+		String datos = "";
 
 		for (i = 0; i < maxTrabajadores; i++) {
+			if (trabajadores[i] != null) {
 
-			datos = trabajadores[i].getNombre() + " "
-					+ trabajadores[i].getDNI() + " "
-					+ trabajadores[i].getAntiguedad() + " "
-					+ trabajadores[i].getSalario() + " "
-					+ trabajadores[i].getDepartamento();
+				datos = datos + trabajadores[i].toString() + "\n";
+
+			}
+
+			/*
+			 * datos = trabajadores[i].getNombre() + " " +
+			 * trabajadores[i].getDNI() + " " + trabajadores[i].getAntiguedad()
+			 * + " " + trabajadores[i].getSalario() + " " +
+			 * trabajadores[i].getDepartamento();
+			 */
+
 		}
 
 		return datos;
@@ -208,15 +217,21 @@ public class Empresa {
 		int i = 0;
 		try {
 
-			out = new PrintWriter("datosEmpleados.txt");
-			for (i = 0; i < maxTrabajadores; i++) {
-
-				out.println(trabajadores[i].getNombre() + " "
-						+ trabajadores[i].getDNI() + " "
-						+ trabajadores[i].getAntiguedad() + " "
-						+ trabajadores[i].getSalario() + " "
-						+ trabajadores[i].getDepartamento());
-			}
+			out = new PrintWriter("TrabajadoresEmpresa.txt");
+			/*
+			 * for (i = 0; i < maxTrabajadores; i++) {
+			 * 
+			 * 
+			 * out.println(trabajadores[i].getNombre() + " " +
+			 * trabajadores[i].getDNI() + " " + trabajadores[i].getAntiguedad()
+			 * + " " + trabajadores[i].getSalario() + " " +
+			 * trabajadores[i].getDepartamento());
+			 * 
+			 * 
+			 * }
+			 */
+			out.println(maxTrabajadores);
+			out.println(listarEmpleados());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -235,7 +250,7 @@ public class Empresa {
 
 		int j;
 
-		for (i = 0; i < maxTrabajadores; i++) {
+		for (i = 0; i < maxTrabajadores && trabajadores[i] != null; i++) {
 
 			histograma[trabajadores[i].getAntiguedad()]++;
 

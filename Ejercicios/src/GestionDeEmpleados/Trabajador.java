@@ -50,7 +50,7 @@ public class Trabajador {
 	//Lo convierte todo a String
 	public String toString(){
 		
-		String datos = nombre+" con DNI: "+dni+".Antiguedad de "+Integer.toString(antiguedad)+". Departamento: "+departamento+". Salario: "+Integer.toString(salario);
+		String datos = nombre+" "+dni+" "+Integer.toString(antiguedad)+" "+departamento+" "+Integer.toString(salario);
 		
 		return datos;
 	}
