@@ -4,10 +4,10 @@ public class Maspruebas {
 
 	public static void main(String[] args) {
 
-		int mañana[] = new int[4];
+		int manyana[] = new int[4];
 		int tarde[] = new int[4];
 		int i;
-		int sumaMañana = 0;
+		int sumaManyana = 0;
 		int sumaTarde = 0;
 		int turno = 0;
 		Scanner reader = new Scanner(System.in);
@@ -18,12 +18,12 @@ public class Maspruebas {
 
 			for (i = 0; i < 4; i++) {
 
-				System.out.println("Sueldos de empleados del turno de mañana: ");
-				mañana[i] = reader.nextInt();
-				sumaMañana = sumaMañana + mañana[i];
+				System.out.println("Sueldos de empleados del turno de maï¿½ana: ");
+				manyana[i] = reader.nextInt();
+				sumaManyana = sumaManyana + manyana[i];
 
-			}// mañana
-			System.out.println("El turno de mañana: " + sumaMañana);
+			}// manana
+			System.out.println("El turno de manyana: " + sumaManyana);
 
 
 
@@ -43,7 +43,7 @@ public class Maspruebas {
 
 		}// Fin del if
 		System.out.println(" ");
-		System.out.println("Para el turno de mañana introduzca 1 ");
+		System.out.println("Para el turno de manana introduzca 1 ");
 		System.out.println("Para el turno de tarde introduzca 2 ");
 		System.out.println("Para salir pulse 0 ");
 		turno = reader.nextInt();
