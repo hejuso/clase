@@ -70,7 +70,7 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		if (e.getSource()==boton1){
 			
-			texto1=new JTextField("2");
+			System.exit(0);
 		}
 		
 	}
