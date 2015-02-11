@@ -66,7 +66,7 @@ public class Libro {
 		return editorial;
 		
 	}
-	public void getEditorial(String editorial_){
+	public void setEditorial(String editorial_){
 		
 		editorial = editorial_;
 		
