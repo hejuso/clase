@@ -12,7 +12,7 @@ public class Usuario {
 
 	// constructores
 
-	Usuario(String nombre_, String dni_, String direccion_) {
+	public Usuario(String nombre_, String dni_, String direccion_) {
 
 		num_prestamos = 0;
 		nombre = nombre_;
@@ -21,7 +21,7 @@ public class Usuario {
 
 	}
 
-	Usuario(String nombre_, String dni_, String direccion_,
+	public Usuario(String nombre_, String dni_, String direccion_,
 			Prestamo[] prestamos_) {
 
 		nombre = nombre_;
@@ -107,21 +107,73 @@ public class Usuario {
 
 	public void addPrestamo(Prestamo prestamo_) {
 
+		int i = 0;
+		boolean anyadido = false;
+
+		while (!anyadido && i < prestamos.length + 1) {
+
+			if (prestamos[i] == null) {
+				prestamos[i] = prestamo_;
+
+				anyadido = true;
+			}
+			i++;
+
+			System.out.println("Ha añadido un prestamo");
+		}
+
 	}
 
 	public boolean existePrestamo(int id_prestamo) {
 
-		return prestamos != null;
+		boolean existe = false;
+		int i = 0;
 
+		while (!existe && i < prestamos.length + 1) {
+
+			if (prestamos[i].getId() == id_prestamo) {
+
+				System.out.println("Se ha encontrado un prestamo con id: "
+						+ id_prestamo);
+				System.out.println(prestamos[i]);
+				existe = true;
+			}
+
+			i++;
+
+		}
+		return existe;
 	}
 
 	public void cancelarPrestamo(int id_prestamo) {
+
+		int i = 0;
+		boolean cancelado = false;
+
+		while (!cancelado && i < prestamos.length + 1) {
+
+			if (prestamos[i].getId() == id_prestamo) {
+				prestamos[i] = null;
+				cancelado = true;
+				System.out.println("Ha cancelado un prestamo");
+
+			}
+			i++;
+		}
 
 	}
 
 	public String toString() {
 
-		String datos = "";
+		int i = 0;
+
+		String datos = nombre + " " + dni + " " + direccion + " " + num_prestamos;
+		
+		for(i= 0; i<prestamos.length && prestamos[i] != null; i++){
+			
+			datos = datos + " "+ prestamos[i].toString();
+			
+		}
 		return datos;
 
 	}

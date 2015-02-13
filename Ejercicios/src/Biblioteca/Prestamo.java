@@ -94,7 +94,9 @@ public class Prestamo {
 		System.out.println("Su pedido terminará el dia: " + fecha_fin);
 		System.out.println("¿Cuantos dias quiere ampliar el prestamo?");
 
-		fecha_fin = diaInicio + " " + mesMasUno + " " + anyoInicio;
+		String fecha_fin_ampliada = (diaInicio+dias)+ " " + mesMasUno+ " " + anyoInicio;
+		
+		System.out.println("Fecha ampliada: "+fecha_fin_ampliada);
 
 	}
 
