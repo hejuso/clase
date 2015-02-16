@@ -61,7 +61,7 @@ public class Usuario {
 		int contador = 0;
 		for (i = 0; i < num_prestamos; i++) {
 
-			if (prestamos[i].getEstado() == true) {
+			if (prestamos[i] != null && prestamos[i].getEstado() == true) {
 
 				System.out.println(prestamos[i]);
 				contador++;
@@ -167,12 +167,13 @@ public class Usuario {
 
 		int i = 0;
 
-		String datos = nombre + " " + dni + " " + direccion + " " + num_prestamos;
-		
-		for(i= 0; i<prestamos.length && prestamos[i] != null; i++){
-			
-			datos = datos + " "+ prestamos[i].toString();
-			
+		String datos = nombre + " " + dni + " " + direccion + " "
+				+ num_prestamos;
+
+		for (i = 0; i < prestamos.length && prestamos[i] != null; i++) {
+
+			datos = datos + " " + prestamos[i].toString();
+
 		}
 		return datos;
 

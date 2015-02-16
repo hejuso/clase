@@ -12,8 +12,8 @@ public class Prestamo {
 	private Libro libro;
 	private String fecha_inicio;
 	private String fecha_fin;
-	private boolean sanction;
-	private boolean estado;
+	private String sanction;
+	private String estado;
 	private int diaInicio;
 	private int mesInicio;
 	private int anyoInicio;
@@ -33,12 +33,21 @@ public class Prestamo {
 
 		id = num_prestamos + 1;
 		libro = libro_;
-		estado = true;
-		sanction = false;
+		estado = "ABIERTO";
+		sanction = "+";
 		fecha_inicio = diaInicio + " " + mesInicio + " " + anyoInicio;
 		fecha_fin = diaInicio + " " + (mesMasUno = mesInicio + 1) + " "
 				+ anyoInicio;
 
+	}
+	
+	public Prestamo(int id_, Libro l_, String inicio_, String fin_, String sancion_, String estado_) {
+
+		id = id_;
+		libro = l_;
+		fecha_inicio = inicio_;
+		fecha_fin = fin_;
+		
 	}
 
 	// metodos
@@ -67,15 +76,15 @@ public class Prestamo {
 
 	}
 
-	public boolean getSancion() {
+	public String getSancion() {
 
 		return sanction;
 
 	}
 
-	public boolean getEstado() {
+	public String getEstado() {
 
-		return estado = true;
+		return estado;
 
 	}
 
@@ -102,13 +111,13 @@ public class Prestamo {
 
 	public void setEstado() {
 
-		estado = false;
+		estado = "cerrado";
 
 	}
 
 	public void setSancion() {
 
-		sanction = true;
+		sanction = "-";
 
 	}
 
