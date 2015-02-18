@@ -41,7 +41,7 @@ public class Prestamo {
 
 	}
 	
-	public Prestamo(int id_, Libro l_, String inicio_, String fin_, String sancion_, String estado_) {
+	public Prestamo(int id_,Libro l_, String inicio_, String fin_, String sancion_, String estado_) {
 
 		id = id_;
 		libro = l_;

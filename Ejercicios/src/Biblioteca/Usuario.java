@@ -61,7 +61,7 @@ public class Usuario {
 		int contador = 0;
 		for (i = 0; i < num_prestamos; i++) {
 
-			if (prestamos[i] != null && prestamos[i].getEstado() == true) {
+			if (prestamos[i] != null && prestamos[i].getEstado() == "activo") {
 
 				System.out.println(prestamos[i]);
 				contador++;
@@ -72,7 +72,7 @@ public class Usuario {
 		int j = 0;
 		for (i = 0; i < num_prestamos; i++) {
 
-			if (prestamos[i].getEstado() == true) {
+			if (prestamos[i].getEstado() == "activo") {
 				prestamosActivos[j] = prestamos[i];
 				j++;
 			}
@@ -87,7 +87,7 @@ public class Usuario {
 		int contador = 0;
 		for (i = 0; i < num_prestamos; i++) {
 
-			if (prestamos[i].getSancion() == true) {
+			if (prestamos[i].getSancion() == "+") {
 				System.out.println(prestamos[i]);
 				contador++;
 			}
@@ -97,7 +97,7 @@ public class Usuario {
 		int j = 0;
 		for (i = 0; i < num_prestamos; i++) {
 
-			if (prestamos[i].getSancion() == true) {
+			if (prestamos[i].getSancion() == "+") {
 				prestamosSancionados[j] = prestamos[i];
 				j++;
 			}
