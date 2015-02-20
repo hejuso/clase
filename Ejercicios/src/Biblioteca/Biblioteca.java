@@ -112,7 +112,7 @@ public class Biblioteca {
 							encontrado = true;
 						}
 
-					} 
+					}  
 
 					Prestamo prestamo = new Prestamo(id, libros[posicion],
 							fecha_inicio, fecha_fin, sanction, estado);
