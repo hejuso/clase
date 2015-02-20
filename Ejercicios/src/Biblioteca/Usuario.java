@@ -31,7 +31,7 @@ public class Usuario {
 
 	}
 
-	// métodos
+	// mÃ©todos
 
 	public String getNombre() {
 
@@ -119,7 +119,7 @@ public class Usuario {
 			}
 			i++;
 
-			System.out.println("Ha añadido un prestamo");
+			System.out.println("Ha aï¿½adido un prestamo");
 		}
 
 	}
@@ -171,9 +171,9 @@ public class Usuario {
 				+ num_prestamos;
 
 		for (i = 0; i < prestamos.length && prestamos[i] != null; i++) {
-
-			datos = datos + " " + prestamos[i].toString();
-
+			
+			datos = datos +"\n "+ prestamos[i].toString();
+			
 		}
 		return datos;
 

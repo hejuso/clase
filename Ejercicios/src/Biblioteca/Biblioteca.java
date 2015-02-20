@@ -23,10 +23,9 @@ public class Biblioteca {
 		try {
 
 			in = new Scanner(new FileReader("infoBiblioteca.txt"));
-
 			in.useDelimiter(";");
 			in.nextLine();
-			in.nextLine();
+			// in.nextLine();
 
 			int i = 0;
 			boolean leerlibros = true;
@@ -44,7 +43,7 @@ public class Biblioteca {
 					String autor = in.next();
 					System.out.println("AUTOR: " + autor);
 					int anyo = in.nextInt();
-					System.out.println("AÑO: " + anyo);
+					System.out.println("AÃ‘O: " + anyo);
 					String editorial = in.next();
 					System.out.println("EDITORIAL: " + editorial);
 					String isbn = in.next();
@@ -66,7 +65,7 @@ public class Biblioteca {
 
 			for (i = 0; in.hasNext(); i++) {
 
-				
+				System.out.println("");
 				System.out.println("USUARIOS");
 				System.out.println("");
 				String nombre = in.next();
@@ -74,7 +73,7 @@ public class Biblioteca {
 				String dni = in.next();
 				System.out.println("DNI: " + dni);
 				String direccion = in.next();
-				System.out.println("Dirección: " + direccion);
+				System.out.println("DirecciÃ³n: " + direccion);
 				int num_prestamos = in.nextInt();
 				System.out.println("Num. Prestamos: " + num_prestamos);
 				System.out.println("");
@@ -83,6 +82,7 @@ public class Biblioteca {
 				for (j = 0; j < num_prestamos; j++) {
 
 					in.nextLine();
+					System.out.println("");
 					System.out.println("LIBROS");
 					System.out.println("");
 					int id = in.nextInt();
@@ -94,7 +94,7 @@ public class Biblioteca {
 					String fecha_fin = in.next();
 					System.out.println("Fecha Fin: " + fecha_fin);
 					String sanction = in.next();
-					System.out.println("Sanción: " + sanction);
+					System.out.println("SanciÃ³n: " + sanction);
 					String estado = in.next();
 					System.out.println("Estado: " + estado);
 
@@ -119,7 +119,7 @@ public class Biblioteca {
 					p[j] = prestamo;
 
 				}
-
+				System.out.println("");
 				System.out.println("MOSTRAR USUARIOS toString()");
 				Usuario u = new Usuario(nombre, dni, direccion, p);
 				System.out.println(u.toString());
@@ -133,6 +133,44 @@ public class Biblioteca {
 			in.close();
 		}
 	}
+
 	// metodos
+
+	public void altaUsuario(Usuario usuarios_) {
+
+		int i = 0;
+		boolean anyadido = false;
+
+		while (!anyadido) {
+
+			if (usuarios[i] == null) {
+
+				usuarios[i] = usuarios_;
+				anyadido = true;
+			}
+			i++;
+
+		}
+
+	}
+
+	public void bajaUsuario(String dni_) {
+
+		String dni = dni_;
+		boolean borrado = false;
+		int i = 0;
+
+		while (!borrado) {
+
+			if (usuarios[i].getDNI() != null) {
+
+				usuarios[i] = null;
+				borrado = true;
+			}
+
+			i++;
+		}
+
+	}
 
 }

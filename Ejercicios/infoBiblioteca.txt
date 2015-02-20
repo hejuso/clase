@@ -1,11 +1,12 @@
 Libros:
------------
+-----------;
 La ciudad del viento;autor1;2005;ed. Planeta;ISBNX;
 La catedral del mar;autor2;2004;ed. Libros;ISBNY;
+1984;autor4;1975;ed. deBolsillo;ISBNW;
 Sin noticias;autor3;2003;bromera;ISBNZ;
 Prestamos:
 ----------------;
-Luis;18465678;Av. Peris	y Valero, 14, Valencia CP 46028;3;
+Luis;18465678;Av. Peris y Valero, 14, Valencia CP 46028;3;
 0;La ciudad del viento; 12/11/2014; 12/12/2014;-;cerrado;
 1;1984;20/01/2015;20/02/2015;-;activo;
 2;La catedral del mar;20/01/2015; 20/02/2015;-;activo;

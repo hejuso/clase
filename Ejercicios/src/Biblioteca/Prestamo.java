@@ -33,7 +33,7 @@ public class Prestamo {
 
 		id = num_prestamos + 1;
 		libro = libro_;
-		estado = "ABIERTO";
+		estado = "activo";
 		sanction = "+";
 		fecha_inicio = diaInicio + " " + mesInicio + " " + anyoInicio;
 		fecha_fin = diaInicio + " " + (mesMasUno = mesInicio + 1) + " "
@@ -47,6 +47,8 @@ public class Prestamo {
 		libro = l_;
 		fecha_inicio = inicio_;
 		fecha_fin = fin_;
+		sanction = sancion_;
+		estado = estado_;
 		
 	}
 
@@ -90,7 +92,7 @@ public class Prestamo {
 
 	public String toString() {
 
-		String datos = num_prestamos + " " + id + " " + libro.toString() + " "
+		String datos = id + " " + libro.toString() + " "
 				+ fecha_inicio + " " + fecha_fin + " " + sanction + " "
 				+ estado;
 
@@ -100,8 +102,8 @@ public class Prestamo {
 
 	public void ampliarPrestamo(int dias) {
 
-		System.out.println("Su pedido terminará el dia: " + fecha_fin);
-		System.out.println("¿Cuantos dias quiere ampliar el prestamo?");
+		System.out.println("Su pedido terminarÃ¡ el dia: " + fecha_fin);
+		System.out.println("-Â¿Cuantos dias quiere ampliar el prestamo?");
 
 		String fecha_fin_ampliada = (diaInicio+dias)+ " " + mesMasUno+ " " + anyoInicio;
 		
