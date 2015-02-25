@@ -28,10 +28,20 @@ public class Usuario {
 		dni = dni_;
 		direccion = direccion_;
 		prestamos = prestamos_;
+		int contador=0;
+		for (int i = 0; i<prestamos.length; i++){
+			
+			if (prestamos[i]!=null){
+				contador++;
+			}
+			
+		}
+		
+		num_prestamos=contador;
 
 	}
 
-	// métodos
+	// metodos
 
 	public String getNombre() {
 
@@ -77,6 +87,7 @@ public class Usuario {
 				j++;
 			}
 		}
+		
 		return prestamosActivos;
 
 	}

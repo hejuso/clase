@@ -36,6 +36,7 @@ public class Biblioteca {
 
 				in.nextLine();
 				String titulo = in.next();
+				System.out.println("");
 				System.out.println("TITULO: " + titulo);
 
 				if (titulo.contains("Prestamos:") == false) {
@@ -43,7 +44,7 @@ public class Biblioteca {
 					String autor = in.next();
 					System.out.println("AUTOR: " + autor);
 					int anyo = in.nextInt();
-					System.out.println("AÃ‘O: " + anyo);
+					System.out.println("AÑO: " + anyo);
 					String editorial = in.next();
 					System.out.println("EDITORIAL: " + editorial);
 					String isbn = in.next();
@@ -73,7 +74,7 @@ public class Biblioteca {
 				String dni = in.next();
 				System.out.println("DNI: " + dni);
 				String direccion = in.next();
-				System.out.println("DirecciÃ³n: " + direccion);
+				System.out.println("Dirección: " + direccion);
 				int num_prestamos = in.nextInt();
 				System.out.println("Num. Prestamos: " + num_prestamos);
 				System.out.println("");
@@ -94,7 +95,7 @@ public class Biblioteca {
 					String fecha_fin = in.next();
 					System.out.println("Fecha Fin: " + fecha_fin);
 					String sanction = in.next();
-					System.out.println("SanciÃ³n: " + sanction);
+					System.out.println("Sanción: " + sanction);
 					String estado = in.next();
 					System.out.println("Estado: " + estado);
 
@@ -112,7 +113,7 @@ public class Biblioteca {
 							encontrado = true;
 						}
 
-					}  
+					}
 
 					Prestamo prestamo = new Prestamo(id, libros[posicion],
 							fecha_inicio, fecha_fin, sanction, estado);
@@ -156,13 +157,12 @@ public class Biblioteca {
 
 	public void bajaUsuario(String dni_) {
 
-		String dni = dni_;
 		boolean borrado = false;
 		int i = 0;
 
 		while (!borrado) {
 
-			if (usuarios[i].getDNI() != null) {
+			if (usuarios[i].getDNI() == dni_) {
 
 				usuarios[i] = null;
 				borrado = true;
@@ -171,6 +171,81 @@ public class Biblioteca {
 			i++;
 		}
 
+	}
+
+	public void altaLibro(Libro libro_) {
+
+		int i = 0;
+		boolean anyadido = false;
+
+		while (!anyadido) {
+
+			if (libros[i] == null) {
+
+				libros[i] = libro_;
+				anyadido = true;
+			}
+			i++;
+
+		}
+
+	}
+
+	public int getNumPrestamosActivos() {
+
+		int i = 0;
+		int numPrestamosActivos = 0;
+
+		for (i = 0; i < usuarios.length; i++) {
+
+			if (usuarios[i] != null) {
+				Prestamo[] prestamosActivos = usuarios[i].getPrestamosActivos();
+				for (int j = 0; j < prestamosActivos.length; j++) {
+					if (prestamosActivos[i] != null) {
+						numPrestamosActivos++;
+					}
+				}
+			}
+
+		}
+
+		return numPrestamosActivos;
+	}
+
+	public int getNumPrestamosSanciones() {
+		
+		int i = 0;
+		int numPrestamosSancionados = 0;
+
+		for (i = 0; i < usuarios.length; i++) {
+
+			if (usuarios[i] != null) {
+				Prestamo[] prestamosSancionados = usuarios[i].getPrestamosSancionados();
+				for (int j = 0; j < prestamosSancionados.length; j++) {
+					if (prestamosSancionados[i] != null) {
+						numPrestamosSancionados++;
+					}
+				}
+			}
+
+		}
+
+		return numPrestamosSancionados;
+
+	}
+	
+	public Usuario getUsuarios(){
+		
+		int i=0;
+		Usuario getUsuarios = null;
+		
+		for(i=0; i<usuarios.length;i++){
+
+			getUsuarios = usuarios[i];
+			
+		}
+		
+		return getUsuarios;
 	}
 
 }
