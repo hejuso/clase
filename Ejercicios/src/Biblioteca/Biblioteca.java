@@ -213,14 +213,15 @@ public class Biblioteca {
 	}
 
 	public int getNumPrestamosSanciones() {
-		
+
 		int i = 0;
 		int numPrestamosSancionados = 0;
 
 		for (i = 0; i < usuarios.length; i++) {
 
 			if (usuarios[i] != null) {
-				Prestamo[] prestamosSancionados = usuarios[i].getPrestamosSancionados();
+				Prestamo[] prestamosSancionados = usuarios[i]
+						.getPrestamosSancionados();
 				for (int j = 0; j < prestamosSancionados.length; j++) {
 					if (prestamosSancionados[i] != null) {
 						numPrestamosSancionados++;
@@ -233,19 +234,116 @@ public class Biblioteca {
 		return numPrestamosSancionados;
 
 	}
-	
-	public Usuario getUsuarios(){
-		
-		int i=0;
-		Usuario getUsuarios = null;
-		
-		for(i=0; i<usuarios.length;i++){
 
-			getUsuarios = usuarios[i];
+	public Usuario[] getUsuarios() {
+
+		int i = 0;
+
+		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
+
+			System.out.println(usuarios[i].toString());
+
+		}
+
+		return usuarios;
+	}
+
+	public Libro[] getLibro() {
+
+		int i = 0;
+
+		for (i = 0; i < libros.length && libros[i] != null; i++) {
+
+			System.out.println(libros[i].toString());
+
+		}
+
+		return libros;
+
+	}
+
+	public Usuario getUsuario(String dni) {
+
+		int i = 0;
+		Usuario getUsuario = null;
+		boolean encontrado = false;
+
+		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
+
+			if (!encontrado && usuarios[i].getDNI().equals(dni)) {
+
+				getUsuario = usuarios[i];
+
+			}
+		}
+
+		return getUsuario;
+
+	}
+
+	public Libro getLibro(String isbn) {
+
+		int i = 0;
+		Libro getLibro = null;
+		boolean encontrado = false;
+
+		for (i = 0; i < libros.length && libros[i] != null; i++) {
+
+			if (!encontrado && libros[i].getIsbn().equals(isbn)) {
+
+				getLibro = libros[i];
+
+			}
+		}
+
+		return getLibro;
+
+	}
+
+	public void histograma() {
+
+		int i = 0;
+		int histograma[] = new int[10];
+
+		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
+
+			histograma[usuarios[i].getNumPrestamos()]++;
+			System.out.println("Prestamos: " + usuarios[i].getNumPrestamos());
+
+		}
+
+		int j = 0;
+
+		for (i = 0; i < histograma.length; i++) {
+
+			if (histograma[i] != 0) {
+
+				System.out.print("Con " + i + "prestamos, hay: ");
+				for (j = 0; j < histograma[j]; j++) {
+
+					System.out.print("| ");
+
+				}
+
+			}
+
+		}
+
+	}
+	
+	/*public void guardar(){
+		
+		PrintWriter out = null;
+		
+		try{
+			
+			
+		}catch{
+			
+		}finally{
 			
 		}
 		
-		return getUsuarios;
-	}
+	}*/
 
 }

@@ -9,7 +9,6 @@ public class PruebaBiblioteca {
 
 		System.out.println("");
 		
-		System.out.println(b.getUsuarios());
 		
 	}
 
