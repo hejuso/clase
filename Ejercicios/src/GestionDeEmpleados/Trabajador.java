@@ -22,36 +22,37 @@ public class Trabajador {
 		departamento = adepartamento;
 
 	}
-	
-	//Metodos
-	
-	public String getNombre(){
+
+	// Metodos
+
+	public String getNombre() {
 		return nombre;
 	}
-	
-	public String getDNI(){
+
+	public String getDNI() {
 		return dni;
 	}
-	
-	public int getAntiguedad(){
+
+	public int getAntiguedad() {
 		return antiguedad;
 	}
-	
-	public int getSalario(){
-		
+
+	public int getSalario() {
+
 		return salario;
 	}
-	
-	public String getDepartamento(){
-		
+
+	public String getDepartamento() {
+
 		return departamento;
 	}
-	
-	//Lo convierte todo a String
-	public String toString(){
-		
-		String datos = nombre+" "+dni+" "+Integer.toString(antiguedad)+" "+departamento+" "+Integer.toString(salario);
-		
+
+	// Lo convierte todo a String
+	public String toString() {
+
+		String datos = nombre + " " + dni + " " + Integer.toString(antiguedad)
+				+ " " + departamento + " " + Integer.toString(salario);
+
 		return datos;
 	}
 

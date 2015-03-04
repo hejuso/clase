@@ -98,7 +98,7 @@ public class Empresa {
 				for (int i = 0; i < maxTrabajadores && !insertado; i++) {
 
 					if (trabajadores[i] == null) {
-						trabajadores[numTrabajadores] = e;
+						trabajadores[i] = e;
 						numTrabajadores++;
 						System.out.println("Num trabaj tras añadir empleado: "
 								+ numTrabajadores);
@@ -195,8 +195,13 @@ public class Empresa {
 
 		for (i = 0; i < maxTrabajadores; i++) {
 			if (trabajadores[i] != null) {
-
-				datos = datos + trabajadores[i].toString() + "\n";
+				
+				if(trabajadores[i].getAntiguedad()>2){
+					
+					datos = datos + trabajadores[i].toString() + "\n";
+					
+				}
+				
 
 			}
 
