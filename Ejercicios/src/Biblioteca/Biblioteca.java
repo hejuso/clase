@@ -2,6 +2,7 @@ package Biblioteca;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -137,38 +138,49 @@ public class Biblioteca {
 
 	// metodos
 
-	public void altaUsuario(Usuario usuarios_) {
+	public void altaUsuario(Usuario usuario_) {
 
 		int i = 0;
 		boolean anyadido = false;
 
 		while (!anyadido) {
 
+			// if (usuarios[i] != null) {
+			// System.out.println(" Usuario: " + usuarios[i].toString());
+			// }
+
 			if (usuarios[i] == null) {
 
-				usuarios[i] = usuarios_;
+				usuarios[i] = usuario_;
+
 				anyadido = true;
+
 			}
 			i++;
-
 		}
 
 	}
 
-	public void bajaUsuario(String dni_) {
+	public void bajaUsuario(String dni) {
+
+		int i = 0;
 
 		boolean borrado = false;
-		int i = 0;
 
 		while (!borrado) {
 
-			if (usuarios[i].getDNI() == dni_) {
-
+			if (usuarios[i] != null) {
+				System.out.println("usuarios[i].getDNI():-"
+						+ usuarios[i].getDNI() + " -");
+			}
+			if (usuarios[i] != null && usuarios[i].getDNI().equals(dni)) {
 				usuarios[i] = null;
+				System.out.println("El usuario: " + dni + " ha sido borrado.");
 				borrado = true;
 			}
 
 			i++;
+
 		}
 
 	}
@@ -176,69 +188,72 @@ public class Biblioteca {
 	public void altaLibro(Libro libro_) {
 
 		int i = 0;
-		boolean anyadido = false;
 
-		while (!anyadido) {
+		boolean dadoAlta = false;
+
+		while (!dadoAlta) {
 
 			if (libros[i] == null) {
-
 				libros[i] = libro_;
-				anyadido = true;
+				System.out.println("El libro: " + libro_.toString()
+						+ " ha sido dado de alta.");
+
+				dadoAlta = true;
 			}
 			i++;
-
 		}
 
 	}
 
 	public int getNumPrestamosActivos() {
 
-		int i = 0;
-		int numPrestamosActivos = 0;
+		int presAct = 0;
+		int i;
+		int j;
 
 		for (i = 0; i < usuarios.length; i++) {
 
 			if (usuarios[i] != null) {
-				Prestamo[] prestamosActivos = usuarios[i].getPrestamosActivos();
-				for (int j = 0; j < prestamosActivos.length; j++) {
-					if (prestamosActivos[i] != null) {
-						numPrestamosActivos++;
+
+				for (j = 0; j < usuarios[i].getPrestamosActivos().length; j++) {
+
+					if (usuarios[i].getPrestamosActivos()[j] != null) {
+
+						presAct++;
 					}
 				}
 			}
-
 		}
 
-		return numPrestamosActivos;
+		return presAct;
 	}
 
 	public int getNumPrestamosSanciones() {
 
-		int i = 0;
-		int numPrestamosSancionados = 0;
+		int presSan = 0;
+		int i;
+		int j;
 
 		for (i = 0; i < usuarios.length; i++) {
 
 			if (usuarios[i] != null) {
-				Prestamo[] prestamosSancionados = usuarios[i]
-						.getPrestamosSancionados();
-				for (int j = 0; j < prestamosSancionados.length; j++) {
-					if (prestamosSancionados[i] != null) {
-						numPrestamosSancionados++;
+
+				for (j = 0; j < usuarios[i].getPrestamosSancionados().length; j++) {
+
+					if (usuarios[i].getPrestamosSancionados()[j] != null) {
+
+						presSan++;
 					}
 				}
 			}
-
 		}
 
-		return numPrestamosSancionados;
+		return presSan;
 
 	}
 
 	public Usuario[] getUsuarios() {
-
 		int i = 0;
-
 		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
 
 			System.out.println(usuarios[i].toString());
@@ -248,12 +263,12 @@ public class Biblioteca {
 		return usuarios;
 	}
 
-	public Libro[] getLibro() {
+	public Libro[] getLibros() {
 
 		int i = 0;
-
 		for (i = 0; i < libros.length && libros[i] != null; i++) {
 
+			System.out.println("");
 			System.out.println(libros[i].toString());
 
 		}
@@ -265,39 +280,42 @@ public class Biblioteca {
 	public Usuario getUsuario(String dni) {
 
 		int i = 0;
-		Usuario getUsuario = null;
+
 		boolean encontrado = false;
+		int usuEncontrado = 0;
 
-		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
+		while (!encontrado) {
 
-			if (!encontrado && usuarios[i].getDNI().equals(dni)) {
+			if (usuarios[i].getDNI().equals(dni)) {
 
-				getUsuario = usuarios[i];
+				usuEncontrado = i;
+
+				encontrado = true;
 
 			}
+			i++;
 		}
 
-		return getUsuario;
-
+		return usuarios[usuEncontrado];
 	}
 
 	public Libro getLibro(String isbn) {
 
 		int i = 0;
-		Libro getLibro = null;
 		boolean encontrado = false;
+		int libEncontrado = 0;
 
-		for (i = 0; i < libros.length && libros[i] != null; i++) {
+		while (!encontrado) {
 
-			if (!encontrado && libros[i].getIsbn().equals(isbn)) {
+			if (libros[i].getIsbn().equals(isbn)) {
 
-				getLibro = libros[i];
-
+				libEncontrado = i;
+				encontrado = true;
 			}
+			i++;
 		}
 
-		return getLibro;
-
+		return libros[libEncontrado];
 	}
 
 	public void histograma() {
@@ -308,42 +326,60 @@ public class Biblioteca {
 		for (i = 0; i < usuarios.length && usuarios[i] != null; i++) {
 
 			histograma[usuarios[i].getNumPrestamos()]++;
-			System.out.println("Prestamos: " + usuarios[i].getNumPrestamos());
 
+			System.out.println("Prestamos: " + usuarios[i].getNumPrestamos());
 		}
 
-		int j = 0;
+		int j;
 
 		for (i = 0; i < histograma.length; i++) {
 
 			if (histograma[i] != 0) {
-
-				System.out.print("Con " + i + "prestamos, hay: ");
-				for (j = 0; j < histograma[j]; j++) {
+				System.out.print("Con " + i + " prestamos hay: ");
+				for (j = 0; j < histograma[i]; j++) {
 
 					System.out.print("| ");
-
 				}
 
+				System.out.println("");
 			}
-
 		}
 
 	}
-	
-	/*public void guardar(){
-		
+
+	public void guardar() {
 		PrintWriter out = null;
-		
-		try{
-			
-			
-		}catch{
-			
-		}finally{
-			
+
+		try {
+			out = new PrintWriter("guardarBiblioteca.txt");
+
+			int i = 0;
+
+			out.println("- - - LIRBOS - - -");
+			for (i = 0; i < libros.length; i++) {
+				if (libros[i] != null) {
+					out.println(libros[i].toString());
+				}
+			}
+
+			out.println("");
+
+			out.println("- - - USUARIOS - - -");
+			for (i = 0; i < usuarios.length; i++) {
+
+				if (usuarios[i] != null) {
+
+					out.println(usuarios[i].toString());
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			out.close();
 		}
-		
-	}*/
+
+	}
 
 }
