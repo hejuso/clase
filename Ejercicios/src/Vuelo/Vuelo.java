@@ -19,7 +19,7 @@ public class Vuelo {
 	/** Numero maximo de reservas (plazas) de cada vuelo. */
 	public static final int MAX_PLAZAS = 52;
 
-	String[] plazas = new String[MAX_PLAZAS];
+	String[] plazas = new String[MAX_PLAZAS + 1];
 	int reservadas;
 
 	/**
@@ -122,14 +122,37 @@ public class Vuelo {
 	 *            char.
 	 * @return int.
 	 */
-	private int primeraLibre(char pref) {
+	public int primeraLibre(char pref) {
 
 		int i;
-		char pref_ = pref;
+		int libre = -1;
 
 		/* COMPLETAR */
 
-		return pref_;
+		if (pref == 'V') {
+			for (i = 1; i < plazas.length; i = i + 2) {
+
+				if (plazas[i] == null) {
+					libre = i;
+					break;
+				}
+
+			}
+
+		}
+
+		if (pref == 'P') {
+			for (i = 2; i < plazas.length; i = i + 2) {
+
+				if (plazas[i] == null) {
+					libre = i;
+					break;
+				}
+			}
+
+		}
+
+		return libre;
 	} // de primeraLibre
 
 	/**
@@ -149,6 +172,7 @@ public class Vuelo {
 		 */
 		plazas[numP] = pas;
 		reservadas++;
+
 	} // de reservar
 
 	/**
@@ -179,6 +203,7 @@ public class Vuelo {
 	 * @return String.
 	 */
 	public String reservar(String pas, char pref) {
+
 		String str = "";
 
 		/* COMPLETAR */
