@@ -7,7 +7,7 @@ public class PruebaVuelo {
 
 		Vuelo v = new Vuelo("1", "madrid", "valencia", "19:00", "20:00");
 		
-		System.out.println(v.primeraLibre('P'));
+		System.out.println(v.reservar("paco", 'V'));
 	}
 
 }

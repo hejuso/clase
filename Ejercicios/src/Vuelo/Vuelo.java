@@ -100,13 +100,10 @@ public class Vuelo {
 		boolean hayPlaza = false;
 		int i = 0;
 
-		while (!hayPlaza) {
-
+		for (i = 0; i < MAX_PLAZAS; i++) {
 			if (plazas[i] == null) {
 				hayPlaza = true;
 			}
-
-			i++;
 		}
 
 		return hayPlaza;
@@ -135,6 +132,8 @@ public class Vuelo {
 				if (plazas[i] == null) {
 					libre = i;
 					break;
+				} else {
+					libre = -1;
 				}
 
 			}
@@ -147,6 +146,8 @@ public class Vuelo {
 				if (plazas[i] == null) {
 					libre = i;
 					break;
+				} else {
+					libre = -1;
 				}
 			}
 
@@ -205,6 +206,52 @@ public class Vuelo {
 	public String reservar(String pas, char pref) {
 
 		String str = "";
+		int i = 0;
+
+		for (i = 0; i < MAX_PLAZAS; i++) {
+			if (!hayPlazas()) {
+				str = "Imposible realizar la reserva: vuelo completo";
+			}
+		}
+
+		if (pref == 'V') {
+
+			if (primeraLibre('V') == -1) {
+
+				primeraLibre('P');
+				plazas[primeraLibre('P')] = pas;
+				str = "No quedan plazas libres en ventanilla \n"
+						+ "Se le ha asignado el pasillo: " + "" + pas + ""
+						+ ident + "" + origen + "" + destino + "" + hsalida
+						+ "" + hllegada;
+
+			}
+
+		}
+
+		if (pref == 'P') {
+
+			if (primeraLibre('P') == -1) {
+
+				primeraLibre('V');
+				plazas[primeraLibre('V')] = pas;
+				str = "No quedan plazas libres en el pasillo \n"
+						+ "Se le ha asignado ventana: " + pas + " " + ident
+						+ " " + origen + " " + destino + " " + hsalida + " "
+						+ hllegada;
+
+			}
+
+		}
+
+		if (hayPlazas() == true) {
+
+			plazas[primeraLibre(pref)] = pas;
+
+			str = pas + " " + ident + " " + origen + " " + destino + " "
+					+ hsalida + " " + hllegada;
+
+		}
 
 		/* COMPLETAR */
 
@@ -225,6 +272,8 @@ public class Vuelo {
 	public String cancelar(int numP) {
 		String str = "";
 
+		
+		
 		/* COMPLETAR */
 
 		return str;
