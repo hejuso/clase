@@ -271,10 +271,25 @@ public class Vuelo {
 	 */
 	public String cancelar(int numP) {
 		String str = "";
-
-		
-		
+		int i = 0;
 		/* COMPLETAR */
+
+		for (i = 0; i < MAX_PLAZAS; i++) {
+
+			if (i == numP && plazas[i] != null) {
+
+				plazas[i] = null;
+				str = "Reserva cancelada";
+			}
+
+			if (i == numP && plazas[i] == null) {
+
+				str = "Imposible realizar la cancelacion: la plaza " + numP
+						+ " no esta ocupada";
+
+			}
+
+		}
 
 		return str;
 	} // de cancelar
@@ -302,12 +317,25 @@ public class Vuelo {
 	 * 
 	 * @return String.
 	 */
-	public String listarReservas() {
-		String str = "\n" + toString() + "\n";
-
+	public void listarReservas() {
+		String str = "\n" + toString();
+		int i;
 		/* COMPLETAR */
 
-		return str;
+		System.out.println(str);
+
+		for (i = 0; i < MAX_PLAZAS; i++) {
+
+			if (i % 2 == 0 && plazas[i] != null) {
+				System.out.println(plazas[i] + " " + " (P" + i + ")");
+			} else {
+				if (plazas[i] != null) {
+					System.out.println(plazas[i] + " " + " (V" + i + ")");
+				}
+			}
+
+		}
+
 	} // de listarReservas
 
 	/**

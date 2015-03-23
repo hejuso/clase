@@ -25,22 +25,22 @@ public class Alianza {
      *  @param id String.
      *  @return Vuelo.
      */ 
-    public Vuelo getVuelo(String id) {
-	
+   // public Vuelo getVuelo(String id) {
+	//
         /* COMPLETAR */
 		
-    } // de getVuelo
+   // } // de getVuelo
       
     /** 
      *  Devuelve un {@code String} con los vuelos de todas las aerolineas de la {@code Alianza}.
      *  @return String.
      */  
-    public String toString() {
+    /*public String toString() {
         String str = String.format("\n%12s %9s %10s %12s %10s %8s %6s\n","AEROLINEA","IDVUELO","ORIGEN","DESTINO","HSALIDA","HLLEGADA","LIBRES");
         str+="----------------------------------------------------------------------------\n";
         for(int i=0; i<MAX_AEROLINEAS; i++) str+=aerolineas[i].toString()+"\n";
-        return str;
-    } // de toString    
+        return str;*/
+   // } // de toString    
     
     /** 
      *  Devuelve un {@code String} con los vuelos de todas las aerolineas con ciudad de origen {@code orig} y 
@@ -50,13 +50,13 @@ public class Alianza {
      *  @param dest String.
 	 *  @return String.
      */ 
-    public String listarVuelos(String orig, String dest) {        
+   /* public String listarVuelos(String orig, String dest) {        
         String str = String.format("\n%12s %9s %10s %12s %10s %8s %6s\n","AEROLINEA","IDVUELO","ORIGEN","DESTINO","HSALIDA","HLLEGADA","LIBRES");
         str+="----------------------------------------------------------------------------\n";
         for(int i=0; i<MAX_AEROLINEAS; i++)
             str+=aerolineas[i].listarVuelos(orig,dest);    
         return str;    
-    } // de listarVuelos
+    }*/ // de listarVuelos
     
     /**
 	 * Convierte a {@code String} el array {@code histograma} con el histograma de ocupacion de vuelos.
@@ -75,7 +75,7 @@ public class Alianza {
      * Devuelve un {@code String} con el histograma de ocupacion de los vuelos de todas las aerolineas.
      * @return String.
      */    
-    public String toHistograma() {
+    /*public String toHistograma() {
 	    // Declara y crea el array histograma 
 	    /* COMPLETAR */
 		
@@ -85,14 +85,14 @@ public class Alianza {
         // Convierte el histograma en String       
         /* COMPLETAR */
 		
-    } // de toHistograma
+    //}// de toHistograma
     
 	/**
      * Guarda la informacion de todas las aerolineas en sus correspondientes ficheros
      * de texto.
      */
-    public void guardar() {
+    /*public void guardar() {
        for(int i=0; i<MAX_AEROLINEAS; i++) aerolineas[i].guardar();        
-    } // de guardar
+    } */// de guardar
 	
 } // de Alianza
