@@ -47,7 +47,6 @@ public class Taller {
 		direccion_ = direccion;
 		hora_apertura_ = hora_apertura;
 		hora_cierre_ = hora_cierre;
-
 		cargar();
 
 	}
