@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author hejuso
- *
- */
-package EjemploEmpleado;
